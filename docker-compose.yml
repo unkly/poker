@@ -1,13 +1,15 @@
 version: '3'
 services:
-  database:
-    image: postgres:13.6
+  poker-api:
+    container_name: poker-api
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: ./poker/presentations/poker-api/Dockerfile
     tty: true
-    environment:
-      POSTGRES_DB: poker
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - 5432:5432
     volumes:
-      - postgres:/var/lib/postgresql
+      - ./poker/presentations/poker-api:/app/poker/presentations/poker-api/
+      - ./poker/presentations/poker-api/node_modules:/app/poker/presentations/poker-api/node_modules/
+    command: bash -c "npm run start"
+    ports:
+      - 3000

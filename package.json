@@ -2,9 +2,12 @@
   "name": "poker-app",
   "version": "0.0.1",
   "description": "",
-  "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "workspaces": [
+    "poker/domain/",
+    "poker/usecase/",
+    "poker/presentations/poker-api/"
+  ],
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
